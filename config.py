@@ -5,8 +5,8 @@ UI defaults, and domain boundaries.
 """
 
 # ── Model Defaults ──────────────────────────────────────────────────
-DEFAULT_MODEL = "gemini-2.0-flash"        # Free, fast, high quality
-FALLBACK_MODEL = "gemini-1.5-pro"         # Higher quality if needed
+DEFAULT_MODEL = "llama-3.3-70b-versatile" # Free, powerful, fast via Groq
+FALLBACK_MODEL = "llama-3.1-8b-instant"   # Lighter alternative
 DEFAULT_TEMPERATURE = 0.3                # Low randomness → structured advice
 DEFAULT_TOP_P = 0.9                      # Broad but controlled vocabulary
 MAX_TOKENS = 1024                        # Enough for detailed plans
