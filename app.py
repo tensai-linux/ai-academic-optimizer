@@ -102,11 +102,11 @@ with st.sidebar:
 
     # API Key input
     api_key = st.text_input(
-        "🔑 OpenAI API Key",
+        "🔑 Gemini API Key",
         type="password",
-        placeholder="sk-...",
-        help="Paste your OpenAI API key here. It is NOT stored anywhere.",
-        value=os.getenv("OPENAI_API_KEY", ""),
+        placeholder="AIza...",
+        help="Paste your Google Gemini API key here. Get one free at aistudio.google.com/apikey",
+        value=os.getenv("GEMINI_API_KEY", ""),
     )
 
     st.markdown("---")
@@ -151,9 +151,9 @@ with st.sidebar:
     # Model selection
     model = st.selectbox(
         "🤖 Model",
-        options=["gpt-3.5-turbo", "gpt-4", "gpt-4o-mini", "gpt-4o"],
+        options=["gemini-2.0-flash", "gemini-1.5-flash", "gemini-1.5-pro"],
         index=0,
-        help="Select the OpenAI model. gpt-3.5-turbo is recommended for cost-efficiency.",
+        help="Select the Gemini model. gemini-2.0-flash is recommended (fast and free).",
     )
 
     st.markdown("---")
@@ -246,10 +246,13 @@ def generate_response(user_input: str) -> str:
     Flow: User Input → build_messages() → OpenAI API → Structured Output
     """
     if not api_key:
-        return "⚠️ **Please enter your OpenAI API key in the sidebar to get started.**"
+        return "⚠️ **Please enter your Gemini API key in the sidebar to get started.** Get one free at [aistudio.google.com/apikey](https://aistudio.google.com/apikey)"
 
     try:
-        client = OpenAI(api_key=api_key)
+        client = OpenAI(
+            api_key=api_key,
+            base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+        )
 
         # Build the full message payload (system prompt + history + new query)
         messages = build_messages(
@@ -313,7 +316,7 @@ if user_input := st.chat_input("Ask about study planning, focus, sleep, or exam 
 st.markdown("---")
 st.markdown(
     '<p style="text-align:center; color:#888; font-size:0.85rem;">'
-    'AI Academic & Cognitive Performance Optimizer • Built with Streamlit + OpenAI • '
+    'AI Academic & Cognitive Performance Optimizer • Built with Streamlit + Gemini API • '
     'Domain-restricted to academic optimization only'
     '</p>',
     unsafe_allow_html=True,

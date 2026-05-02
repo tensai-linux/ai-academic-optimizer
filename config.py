@@ -5,8 +5,8 @@ UI defaults, and domain boundaries.
 """
 
 # ── Model Defaults ──────────────────────────────────────────────────
-DEFAULT_MODEL = "gpt-3.5-turbo"          # Cost-effective, fast
-FALLBACK_MODEL = "gpt-4"                 # Higher quality if available
+DEFAULT_MODEL = "gemini-2.0-flash"        # Free, fast, high quality
+FALLBACK_MODEL = "gemini-1.5-pro"         # Higher quality if needed
 DEFAULT_TEMPERATURE = 0.3                # Low randomness → structured advice
 DEFAULT_TOP_P = 0.9                      # Broad but controlled vocabulary
 MAX_TOKENS = 1024                        # Enough for detailed plans
